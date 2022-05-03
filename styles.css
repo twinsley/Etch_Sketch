@@ -16,3 +16,12 @@
 .gridSquareHover {
   background-color: black;
 }
+#header {
+  display: flex;
+}
+button {
+  margin-left: 30px;
+  width: 150px;
+  font-size: larger;
+  height: 70px;
+}
