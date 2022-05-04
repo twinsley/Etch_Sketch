@@ -8,10 +8,6 @@ function addElement() {
   blockColumn.appendChild(block);
 }
 
-function removeElement(element) {
-  element.replaceChildren();
-}
-
 const start = function () {
   for (i = 0; i < count * count; i++) {
     addElement();
@@ -33,8 +29,7 @@ newBtn.addEventListener("click", function () {
   );
 
   if (count <= 100 && count >= 1) {
-    alert(count);
-    removeElement(blockColumn);
+    blockColumn.replaceChildren();
     start();
   } else {
     alert("That was not a number. Press New Game again to try again.");
