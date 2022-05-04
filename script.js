@@ -8,6 +8,28 @@ function addElement() {
   blockColumn.appendChild(block);
 }
 
+function boxCalc() {
+  let size = 900 / count;
+
+  let heights = document.createElement("style");
+  heights.innerHTML = `.gridSquare { width: ${size}px;
+        height: ${size}px;
+    `;
+  document.body.appendChild(heights);
+  let gridSquare = Array.from(document.getElementsByClassName("gridSquare"));
+
+  for (const box of gridSquare)
+    box.addEventListener("mouseover", function () {
+      this.classList.add("gridSquareHover");
+    });
+}
+
+let blocks = document.getElementsByClassName("gridSquare");
+for (const each of blocks) {
+  each.setAttribute("style", `width:${size}`);
+  each.setAttribute("style", `height:${size}`);
+}
+
 const start = function () {
   for (i = 0; i < count * count; i++) {
     addElement();
@@ -31,8 +53,11 @@ newBtn.addEventListener("click", function () {
   if (count <= 100 && count >= 1) {
     blockColumn.replaceChildren();
     start();
+    boxCalc();
   } else {
-    alert("That was not a number. Press New Game again to try again.");
+    alert(
+      "That was not a number between 1 and 100. Press New Game again to try again."
+    );
   }
 });
 
@@ -43,3 +68,6 @@ reloadBtn.addEventListener("click", function () {
     each.classList.remove("gridSquareHover");
   }
 });
+
+//calculate box size to fit the input 'count' into 900 px.
+//change height and width styles to match
