@@ -21,3 +21,25 @@ for (const box of gridSquare)
   box.addEventListener("mouseover", function () {
     this.classList.add("gridSquareHover");
   });
+const newBtn = document.querySelector("#newGame");
+newBtn.addEventListener("click", function () {
+  let count = Number(
+    prompt(
+      "Please enter the number of squares per side. Number should be between 1 and 100"
+    )
+  );
+
+  if (count <= 100 && count >= 1) {
+    alert(count);
+  } else {
+    alert("That was not a number. Press New Game again to try again.");
+  }
+});
+
+const reloadBtn = document.querySelector("#resetGame");
+reloadBtn.addEventListener("click", function () {
+  let divs = document.querySelectorAll("div");
+  for (const each of divs) {
+    each.classList.remove("gridSquareHover");
+  }
+});
