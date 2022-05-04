@@ -1,20 +1,23 @@
-// create a div
-//use a for loop to fill the row
-//use a for loop to fill the column
+let count = 90;
 let row = document.createElement("div");
 let blockColumn = document.getElementById("grid");
+
 function addElement() {
   let block = document.createElement("div");
   block.classList.add("gridSquare");
   blockColumn.appendChild(block);
 }
-for (i = 0; i < 16 * 16; i++) {
-  addElement();
-}
-for (x = 0; x < 16; x++) {
-  document.getElementById("grid").appendChild(row);
+
+function removeElement(element) {
+  element.replaceChildren();
 }
 
+const start = function () {
+  for (i = 0; i < count * count; i++) {
+    addElement();
+  }
+};
+start();
 let gridSquare = Array.from(document.getElementsByClassName("gridSquare"));
 
 for (const box of gridSquare)
@@ -23,7 +26,7 @@ for (const box of gridSquare)
   });
 const newBtn = document.querySelector("#newGame");
 newBtn.addEventListener("click", function () {
-  let count = Number(
+  count = Number(
     prompt(
       "Please enter the number of squares per side. Number should be between 1 and 100"
     )
@@ -31,6 +34,8 @@ newBtn.addEventListener("click", function () {
 
   if (count <= 100 && count >= 1) {
     alert(count);
+    removeElement(blockColumn);
+    start();
   } else {
     alert("That was not a number. Press New Game again to try again.");
   }
